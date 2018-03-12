@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html class="full-height">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bulma/0.4.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  
+  <title>springboot使用 | zxj@&#34;&#34;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="springboot运行的三种方式1.直接运行main2.打成jar包,使用java -jar命令运行3.spring-boot:run方法运行   @SpringBootApplication这个注解告诉springboot自动的去完成相关配置，包括基础类的加载，bean的扫描等等使用该注解，等价于同时使用@Configuration @EnableAutoConfiguration @Com">
+<meta name="keywords" content="springboot使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springboot使用">
+<meta property="og:url" content="http://yoursite.com/2018/03/12/Springboot使用/index.html">
+<meta property="og:site_name" content="zxj@&quot;&quot;s Blog">
+<meta property="og:description" content="springboot运行的三种方式1.直接运行main2.打成jar包,使用java -jar命令运行3.spring-boot:run方法运行   @SpringBootApplication这个注解告诉springboot自动的去完成相关配置，包括基础类的加载，bean的扫描等等使用该注解，等价于同时使用@Configuration @EnableAutoConfiguration @Com">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/zxj1314/photo/master/clipboard.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zxj1314/photo/master/1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zxj1314/photo/master/2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zxj1314/photo/master/3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zxj1314/photo/master/4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zxj1314/photo/master/5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zxj1314/photo/master/6.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zxj1314/photo/master/7.png">
+<meta property="og:updated_time" content="2018-03-12T12:00:21.932Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="springboot使用">
+<meta name="twitter:description" content="springboot运行的三种方式1.直接运行main2.打成jar包,使用java -jar命令运行3.spring-boot:run方法运行   @SpringBootApplication这个注解告诉springboot自动的去完成相关配置，包括基础类的加载，bean的扫描等等使用该注解，等价于同时使用@Configuration @EnableAutoConfiguration @Com">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/zxj1314/photo/master/clipboard.png">
+  
+    <link rel="alternate" href="/atom.xml" title="zxj@&#34;&#34;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/nav.css">
+<link rel="stylesheet" href="/css/layout.css">
+  
+
+</head>
+
+<body>
+  <header id="navbar" class="overflow-hidden">
+  <div class="container">
+    <nav class="nav">
+         <div class="nav-left">
+            <a href="/" class="nav-item" style="font-size: 20px;">
+              <span class="logo">zxj</span>'s Blog
+            </a>
+         </div>
+        <div class="nav-center is-hidden position-relative" id="search_container">
+            <div class="nav-item full-width full-height">
+                <i class="fa fa-search has-padding" aria-hidden="true"></i>
+                <input type="text" id="search_input" class="search-input full-height full-width" placeholder="Search post" autofocus>
+                <i id="close_search" class="fa fa-times" aria-hidden="true"></i>
+            </div>
+            <div id="search_result"></div>
+        </div>
+        <div class="nav-right nav-menu">
+            <a class="nav-item" id="search">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
+            
+            <a class="nav-item" href="/">
+                首页
+            </a>
+            
+            <a class="nav-item" href="/works">
+                工作
+            </a>
+            
+            <a class="nav-item" href="/about">
+                关于
+            </a>
+            
+        </div>
+        <span class="nav-toggle" id="navMenuDropdown">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+        <div class="navbar-menu position-absolute full-width content-box is-hidden-desktop is-flex flex-column center" style="top: 100%;">
+            
+            <a class="nav-item flex-1" href="/">
+                首页
+            </a>
+            
+            <a class="nav-item flex-1" href="/works">
+                工作
+            </a>
+            
+            <a class="nav-item flex-1" href="/about">
+                关于
+            </a>
+            
+        </div>
+    </nav>
+  </div>
+</header>
+
+  <div id="main-wrap" class="position-relative" style="margin-top: 55px;">
+      <div class="main-inner-content">
+          <!--博文页面-->
+
+<style>
+    .header-box {
+        height: 370px;
+        filter: blur(10px);
+        background-size: cover;
+        background-color: lightsteelblue;
+    }
+
+    .post-box {
+        padding: 15px;
+        padding-top: 60px;
+        min-height: 80vh;
+        margin-top: -200px;
+        border-radius: 4px;
+        background-color: rgba(255,255,255,.8);
+    }
+
+    .post-avatar {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+    }
+
+    .flow-chart {
+        text-align: center;
+    }
+
+    img[alt="post-cover"] {
+        display: none;
+    }
+</style>
+<header>
+    <div id="header_box" class="header-box"></div>
+</header>
+<section>
+    <div class="container post-box">
+        <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
+            <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
+                <strong>springboot使用</strong>
+            </h1>
+            
+            <div class="is-flex align-center">
+                <img class="post-avatar" src="https://raw.githubusercontent.com/zxj1314/photo/master/8.jpg">
+                <span style="padding:0 10px;"> <span class="sub-title">By</span> zxj</span>
+                <span class="post-date sub-title">at: 2018-03-12</span>
+            </div>
+            
+                <div>
+                    
+                         <a class="tag is-post-tag" href="/tags/springboot使用/">springboot使用</a>
+                    
+                </div>
+            
+        </div>
+        <div class="content" style="overflow: auto">
+            <a id="more"></a>
+<p>springboot运行的三种方式<br>1.直接运行main<br>2.打成jar包,使用java -jar命令运行<br>3.spring-boot:run方法运行  </p>
+<h2 id="SpringBootApplication"><a href="#SpringBootApplication" class="headerlink" title="@SpringBootApplication"></a>@SpringBootApplication</h2><p>这个注解告诉springboot自动的去完成相关配置，包括基础类的加载，bean的扫描等等<br>使用该注解，等价于同时使用@Configuration @EnableAutoConfiguration @ComponentScan<br>@EnableAutoConfiguration注解<br>这个注解告诉Spring Boot,根据添加的jar依赖猜测你想如何配置Spring。由于 spring-boot-starter-web  添加了Tomcat和Spring MVC，所以auto-configuration将假定你正在开发一个web应用，并对Spring进行相应地设置。<br>SpringApplication.run<br>这个是springboot为我们提供的最大的区别，在于springboot不再是一个web应用，需要我们自己去打包，部署，启动tomcat，springboot默认把tomcat打包到应用中，我们可以以正常的运行jar的方式来运行springboot应用<br>  spring-boot-starter-*工具包<br>  spring-boot-starter：核心的工具包，提供了自动配置的支持，日志和YAML配置支持；<br>  spring-boot-starter-activemq：针对快速集成ActiveMQ的工具包；<br>  spring-boot-starter-aop：提供了快速集成SpringAOP和AspectJ的工具包；<br>  spring-boot-starter-data-redis：提供了快速集成Redis和Jedis的工具包；<br>  spring-boot-starter-freemarker：提供了快速集成Freemarker的工具包；<br>  spring-boot-starter-mail：提供了快速集成邮件发送的工具包；<br>  spring-boot-starter-test：提供了对Springboot应用的测试工具包；<br>  spring-boot-starter-web：提供了对web开发的工具包，包括基于SpringMVC的RESTful应用开发，内置的tomcat服务器等；<br>  spring-boot-starter-actuator：提供了对生产环境中应用监控的工具包；<br>  spring-boot-starter-logging：提供了对日志的工具包，默认使用Logback；  </p>
+<h2 id="Springboot热部署"><a href="#Springboot热部署" class="headerlink" title="Springboot热部署"></a>Springboot热部署</h2><p>依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;  </span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;  </span><br><span class="line">    &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;  </span><br><span class="line">   &lt;optional&gt;true&lt;/optional&gt;&lt;!-- optional=true,依赖不会传递，该项目依赖devtools；之后依赖myboot项目的项目如果想要使用devtools，需要重新引入 --&gt;  </span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
+<p>SpringBoot重启是reload重启，通过监控classpath的变化，如果classpath中的文件发生变化，即触发重启。springboot通过两个classpath来完成reload，一个basic classloader中加载不变的类，一个restart classloader中加载classpath中的类，重启的时候，restart classloader中的类丢弃并重新加载；<br>排除资源：<br>spring.devtools.restart.exclude=static/<strong>,templates/</strong><br>spring.devtools.restart.additional-exclude=public/** (处理默认配置排除之外的)<br>spring.devtools.restart.enabled=false  （禁用自动重启）  </p>
+<p>idea实现devtools热部署需要配置两步 :<br>1、CTRL + SHIFT + A –&gt; 查找make project automatically –&gt; 选中<br>2、CTRL + SHIFT + A –&gt; 查找Registry –&gt; 找到并勾选compiler.automake.allow.when.app.running</p>
+<h2 id="Springboot拓展"><a href="#Springboot拓展" class="headerlink" title="Springboot拓展"></a>Springboot拓展</h2><p>1.修改Banner<br>(1)创建一个banner.txt,放到resources<br>(2)设置banner，在配置文件中使用spring.main.banner-mode=off<br>2.通过创建对象的方式来运行SpringApplication<br><img src="https://raw.githubusercontent.com/zxj1314/photo/master/clipboard.png" alt="avatar"><br>3通过builder的方式来运行SpringApplication<br><img src="https://raw.githubusercontent.com/zxj1314/photo/master/1.png" alt="avatar"> </p>
+<p>4，参数的处理：在应用启动过程中，可以通过启动参数给应用传递一些额外的参数来控制应用的运行<br>    (1)，在main方法中可以直接使用传入的参数；<br>    (2)，可以任何类中直接通过@Autowired注入一个ApplicationArguments对象；<br>SpringBoot中的参数设置<br>①springboot中主要的参数来源及优先级：<br>     1，命令行参数；<br>     2，ServletConfig和ServletContext；<br>     3，操作系统环境变量；<br>     4，application-{profile}.properties或者YAML文件；<br>     5，application.properties或者YAML文件；<br>②springboot提供了方便的properties绑定机制<br>    1）默认从application.properties中加载配置；<br>    2）配置随机值：<br>  @Value(“${app.randomint}”)<br>  private Long randomInt;<br>  @Value(“${app.randomlong}”)<br>  private Long randomLong;<br>  @Value(“${app.random}”)<br>  private Long random;<br>  application.properties:<br>  app.randomint=${random.int}<br>  app.randomlong=${random.long}<br>  app.random=${random.long[0,100]}<br>当然也可以直接在属性上面配置${random.int}，${random.long}，${random.long[1,100]}，相当于直接使用SpEL；<br>③@ConfigurationProperties<br>两种绑定方式:<br>1,直接在类上绑定<br>2.在bean标签后面绑定<br>参数绑定标签：可以非常方便的把资源文件中的内容绑定到对象上<br><img src="https://raw.githubusercontent.com/zxj1314/photo/master/2.png" alt="avatar"> </p>
+<h2 id="Springboot中的日志"><a href="#Springboot中的日志" class="headerlink" title="Springboot中的日志"></a>Springboot中的日志</h2><p>日志依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.slf4j&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;slf4j-api&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
+<p>①Springboot推荐使用Logback作为日志框架<br>②springboot默认支持logback.xml或者logback-spring.xml，推荐使用logback-spring.xml，springboot会增加额外功能<br>③可以通过logging.config=classpath:mylogback.xml指定自己的logback配置文件（不推荐）<br><img src="https://raw.githubusercontent.com/zxj1314/photo/master/3.png" alt="avatar"><br>④logbak.xml文件结构说明<br>(1)configuration&gt;:Logback根元素,它的属性如下<br>1,scan: 当此属性设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true。<br>2,scanPeriod: 设置监测配置文件是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒。当scan为true时，此属性生效。默认的时间间隔为1分钟。<br>3,debug: 当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。<br>(2)<contextname>：上下文名字<br>(3)<property>:定义属性，可以使用${}在配置文件中使用<br>(4)<appender>：在logback中是用于具体记录日志的组件，可以用来配置日志记录方式，日志记录格式等,属性如下<br>name:appender的名字，用于下面在配置日志的时候指定；<br>class:使用到的appender类<br>常见的appender：<br>1，ch.qos.logback.core.ConsoleAppender:输出到控制台；<br>2，ch.qos.logback.core.FileAppender：输出到文件；<br>3，ch.qos.logback.core.rolling.RollingFileAppender：输出到文件，可以配置滚动策略，当日志达到某个条件之后分文件记录  </appender></property></contextname></p>
+<p><appender>元素的基本格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;appender name=&quot;&quot; class=&quot;&quot;&gt;</span><br><span class="line">    &lt;encoder&gt;</span><br><span class="line">         &lt;pattern&gt;...&lt;/pattern&gt;</span><br><span class="line">    &lt;/encoder&gt;</span><br><span class="line">    &lt;otherconfig&gt;&lt;/otherconfig&gt;</span><br><span class="line">&lt;/appender&gt;</span><br></pre></td></tr></table></figure></appender></p>
+<p>springboot下打印mybatis日志最便捷的方法:<br>在application.properties中加入:logging.level.com.seemygo.server.goods.mapper=debug<br>静态资源<br>1，默认情况下，Springboot会从classpath下的/static、/public、/resources、/META-INF/resources下加载静态资源；<br>2，可以通过修改spring.resources.staticLocations来修改静态资源加载地址；<br>3，因为应用是打成jar包，所以之前的src/main/webapp不会加载；  </p>
+<h2 id="Springboot和freemarker的集成"><a href="#Springboot和freemarker的集成" class="headerlink" title="Springboot和freemarker的集成"></a>Springboot和freemarker的集成</h2><p>①集成原理<br><img src="https://raw.githubusercontent.com/zxj1314/photo/master/4.png" alt="avatar"><br>②Springboot对freemarker的配置<br>  1，spring.freemarker.enabled=true：是否开启freemarker支持；<br>  2，spring.freemarker.allow-request-override：是否允许request中的属性覆盖model中同名属性；默认false；<br>  3，spring.freemarker.allow-session-override：是否允许session中的属性覆盖model中同名属性；默认false；<br>  4，spring.freemarker.cache：是否支持模板缓存；默认false；<br>  5，spring.freemarker.charset=UTF-8：模板编码<br>  6，spring.freemarker.content-type=text/html：模板contenttype；<br>  7，spring.freemarker.expose-request-attributes：是否开启request属性expose，默认false；<br>  8，spring.freemarker.expose-session-attributes：是否开启session属性expose，默认false；<br>  9，spring.freemarker.expose-spring-macro-helpers：是否开启spring的freemarker宏支持；默认为false；<br>  10，spring.freemarker.prefer-file-system-access：默认为true，支持实时检查模板修改；<br>  11，spring.freemarker.prefix：加载模板时候的前缀；<br>  12，spring.freemarker.settings.*：直接配置freemarker参数<br>  13，spring.freemarker.suffix：模板文件后缀；<br>  14，spring.freemarker.template-loader-path=classpath:/templates/：模板加载地址  </p>
+<h2 id="错误统一处理"><a href="#错误统一处理" class="headerlink" title="错误统一处理"></a>错误统一处理</h2><p>①@ControllerAdvice<br>通过使用@ControllerAdvice定义统一的异常处理类，而不是在每个Controller中逐个定义。@ExceptionHandler用来定义函数针对的异常类型。<br>程序运行过程中出现异常,系统会自动跳转到该异常处理方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@ControllerAdvice</span><br><span class="line">public class GlobalErrorAdvice &#123;</span><br><span class="line">	//处理不同的异常</span><br><span class="line">	//处理统一的异常,可以定位到/error这个处理路径上</span><br><span class="line">	@ExceptionHandler(value = Exception.class)</span><br><span class="line">	public String error(Model model, Exception e) &#123;</span><br><span class="line">		if(e instanceof ArithmeticException)&#123;</span><br><span class="line">			model.addAttribute(&quot;ex&quot;, e);</span><br><span class="line">			return &quot;err&quot;;</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			return &quot;404&quot;;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>②统一的异常页面<br>(1)SpringBoot默认情况下，把所有错误都重新定位到/error这个处理路径上，由BasicErrorController类完成处理<br>(2)SpringBoot提供了默认的替换错误页面的路径,该路径方式是通过ErrorMvcAutoConfiguration中的DefaultErrorViewResolver完成的<br>静态错误页面默认结构：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">src/</span><br><span class="line">    resources/</span><br><span class="line">    public/</span><br><span class="line">        error/</span><br><span class="line">            404.html</span><br><span class="line">            401.html</span><br></pre></td></tr></table></figure></p>
+<p>也可以使用模板页面：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">src/</span><br><span class="line">    resources/</span><br><span class="line">    templates/</span><br><span class="line">        error/</span><br><span class="line">            5xx.ftl</span><br></pre></td></tr></table></figure></p>
+<h2 id="SpringBoot中集成druid"><a href="#SpringBoot中集成druid" class="headerlink" title="SpringBoot中集成druid"></a>SpringBoot中集成druid</h2><p>①配置的方式：<br>spring.datasource.url=jdbc:mysql:///p2p<br>spring.datasource.username=root<br>spring.datasource.password=admin<br>spring.datasource.type=com.alibaba.druid.pool.DruidDataSource<br>spring.datasource.initialSize=3<br>spring.datasource.filters=stat<br>重点在于type配置；<br>原理：springboot使用DataSourceConfiguration类来完成datasource的自动创建：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@ConditionalOnMissingBean(DataSource.class)</span><br><span class="line">@ConditionalOnProperty(name = &quot;spring.datasource.type&quot;)</span><br><span class="line">static class Generic &#123;</span><br><span class="line">@Bean</span><br><span class="line">public DataSource dataSource(DataSourceProperties properties) &#123;</span><br><span class="line">	return properties.initializeDataSourceBuilder().build();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://raw.githubusercontent.com/zxj1314/photo/master/5.png" alt="avatar"><br>②<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Bean</span><br><span class="line">public DataSource dataSource(Properties props) throws Exception &#123;</span><br><span class="line">		DruidDataSource dataSource = new DruidDataSource();</span><br><span class="line">		dataSource.setUrl(&quot;jdbc:mysql:///p2p&quot;);</span><br><span class="line">		dataSource.setUsername(&quot;root&quot;);</span><br><span class="line">		dataSource.setPassword(&quot;admin&quot;);</span><br><span class="line">		dataSource.setInitialSize(3);</span><br><span class="line">		dataSource.setFilters(&quot;stat&quot;);</span><br><span class="line">		dataSource.setMaxActive(10);</span><br><span class="line">		return dataSource;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当然也可以以下这种方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Bean</span><br><span class="line">@ConfigurationProperties(prefix = &quot;springboot.datasource&quot;)</span><br><span class="line">public DataSource dataSource(Properties props) throws Exception &#123;</span><br><span class="line">		return DruidDataSourceFactory.createDataSource(props);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>来完成，但这种方式和配置方式基本就一样了。<br>SpringBoot中集成mybatis<br>1，引入依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">			&lt;version&gt;1.3.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
+<p>2，正常完成mapper接口和mapper.xml<br>3，mybatis-spring-boot-starter提供了以下配置：<br>(具体参考MyBatisProperties对象)<br>mybatis.configLocation:mybatis的配置文件地址；<br>mybatis.mapperLocations：com/xmg/springboot/p2p/mapper/*Mapper.xml<br>mybatis.typeAliasesPackage：别名扫描包；<br>4，扫描mapper接口：<br>第一种方式：使用@MapperScan标签<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">@MapperScan(basePackages=&quot;com.xmg.springboot.demo._10mybatis.mapper&quot;)</span><br><span class="line">public class App &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		SpringApplication.run(App.class, args);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>会自动扫描指定包下的mapper接口；<br>第二种方式：代码的方式,自己手动提供一个自动扫描配置对象:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@AutoConfigureAfter(MybatisAutoConfiguration.class)</span><br><span class="line">public class MapperScanConfiguration &#123;</span><br><span class="line">	@Bean</span><br><span class="line">	public MapperScannerConfigurer mapperScannerConfigurer() &#123;</span><br><span class="line">		MapperScannerConfigurer msc = new MapperScannerConfigurer();</span><br><span class="line">		msc.setSqlSessionFactoryBeanName(&quot;sqlSessionFactory&quot;);</span><br><span class="line">		msc.setBasePackage(&quot;com.xmg.springboot.demo._10mybatis.mapper&quot;);</span><br><span class="line">		return msc;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>SpringBoot事务处理<br>①配置事务管理器<br>1，直接开启@EnableTransactionManagement注解；相当于在xml中配置<a href="tx:annotation-driven/" target="_blank" rel="noopener">tx:annotation-driven/</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">@EnableTransactionManagement</span><br><span class="line">public class App &#123;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		SpringApplication.run(App.class, args);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>依赖包:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.3.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;spring-boot-starter-jdbc&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
+<p>(1)如果在classpath中添加的是spring-boot-starter-jdbc，那么springboot自动创建DataSourceTranscationManager；  </p>
+<p>(2)使用代码的方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Bean</span><br><span class="line">public PlatformTransactionManager transactionManager(DataSource dataSource) &#123;</span><br><span class="line">		return new DataSourceTransactionManager(dataSource);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>②事务控制<br>(1)，如果开启了@EnableTransactionManagement，只需要在service上面使用@Transactional即可；<br>(2)，使用xml配置<br>将事务相关配置抽取到XML中，使用importResource引入<br>1，引入aop<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-aop&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
+<p>2，application-tx.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;tx:advice id=&quot;advice&quot; transaction-manager=&quot;transactionManager&quot;&gt;</span><br><span class="line">		&lt;tx:attributes&gt;</span><br><span class="line">			&lt;tx:method name=&quot;list*&quot; read-only=&quot;true&quot; /&gt;</span><br><span class="line">			&lt;tx:method name=&quot;get*&quot; read-only=&quot;true&quot; /&gt;</span><br><span class="line">			&lt;tx:method name=&quot;query*&quot; read-only=&quot;true&quot; /&gt;</span><br><span class="line">			&lt;tx:method name=&quot;*&quot; /&gt;</span><br><span class="line">		&lt;/tx:attributes&gt;</span><br><span class="line">&lt;/tx:advice&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;aop:config&gt;</span><br><span class="line">	&lt;aop:pointcut expression=&quot;execution(* com.xmg.springboot.demo..service.*Service.*(..))&quot;  id=&quot;pointCut&quot; /&gt;</span><br><span class="line">	&lt;aop:advisor advice-ref=&quot;advice&quot; pointcut-ref=&quot;pointCut&quot; /&gt;</span><br><span class="line">&lt;/aop:config&gt;</span><br></pre></td></tr></table></figure>
+<p>3，引入配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">@MapperScan(basePackages = &quot;com.xmg.springboot.demo._10mybatis.mapper&quot;)</span><br><span class="line">@ImportResource(locations=&quot;classpath:application-tx.xml&quot;)</span><br><span class="line">public class App &#123;</span><br></pre></td></tr></table></figure></p>
+<p>Springboot自动生成的项目框架时如果选择了数据源的问题<br>（1）如果暂时不需要数据源，可将pom文件中的mysql和mybatis（或其他数据源框架）注释掉，即可正常启动。<br>（2）在@SpringBootApplication中排除其注入<br>@SpringBootApplication(exclude={DataSourceAutoConfiguration.class,HibernateJpaAutoConfiguration.class})<br>（3）提供数据源的配置或其他数据源配置，此处提供默认配置示例，在application.properties文件中添加以下配置项：<br>主数据源，默认的:<br>spring.datasource.type=com.zaxxer.hikari.HikariDataSource<br>spring.datasource.driverClassName=com.mysql.jdbc.Driver<br>spring.datasource.url=jdbc:mysql://localhost:3306/test<br>spring.datasource.username=root<br>spring.datasource.password=root  </p>
+<h2 id="SpringBoot注册拦截器"><a href="#SpringBoot注册拦截器" class="headerlink" title="SpringBoot注册拦截器"></a>SpringBoot注册拦截器</h2><p><img src="https://raw.githubusercontent.com/zxj1314/photo/master/6.png" alt="avatar"><br><img src="https://raw.githubusercontent.com/zxj1314/photo/master/7.png" alt="avatar"> </p>
+
+        </div>
+        <div class="post-reply">
+            
+                <!-- 来必力City版安装代码 -->
+                <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTE4Ni81NzUz">
+                    <script type="text/javascript">
+                        (function(d, s) {
+                            var j, e = d.getElementsByTagName(s)[0];
+
+                            if (typeof LivereTower === 'function') { return; }
+
+                            j = d.createElement(s);
+                            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                            j.async = true;
+
+                            e.parentNode.insertBefore(j, e);
+                        })(document, 'script');
+                    </script>
+                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+                </div>
+                <!-- City版安装代码已完成 -->
+            
+            
+        </div>
+    </div>
+</section>
+<script>
+    // 获取第一张图, 用以当封面背景图
+    var img = document.querySelectorAll('img')[1]
+
+    if (img) {
+        var header_box = document.querySelector('#header_box')
+        header_box.style.backgroundImage = 'url('+ img.src +')'
+    }
+</script>
+      </div>
+  </div>
+  <style>
+  #footer {
+    min-height: 10vh;
+    background: black;
+    color: #fff;
+  }
+
+  #footer a {
+    color: #e1e1e1;
+  }
+</style>
+<footer id="footer" class="has-text-centered is-flex center">
+  <div class="container has-padding">
+    <div>
+      <div>
+        <!--请您保留作者署名, 主题制作来之不易-->
+        Theme by <a href="http://haojen.github.io/">zxj</a>
+        <br>
+        Copyright © zxj 2018
+        <br>
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/search_core.js"></script>
+<script src="/js/script.js"></script>
+
+</body>
+</html>
